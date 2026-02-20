@@ -11,7 +11,7 @@ async def set_interval(message: Message):
 
     job_id = f"weather_{message.chat.id}"
 
-    # Удаляем старую задачу
+    # Удаление старой задачи
 
     if scheduler.get_job(job_id):
         scheduler.remove_job(job_id)
@@ -24,7 +24,7 @@ async def set_interval(message: Message):
         await message.answer("Сначала выбери город ")
         return
 
-    # Определяем интервал
+    # Определение интервала
 
     if message.text == "Каждые 10 минут":
         minutes = 10

@@ -1,5 +1,6 @@
 import asyncio
 import logging
+import os
 
 from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.memory import MemoryStorage
@@ -9,12 +10,12 @@ from handlers.interval import interval_router
 from utils.bot_commands import set_bot_commands
 from services.tasks import scheduler
 
-BOT_TOKEN = '8416503975:AAEn6hiUxAZYExcclba2arg6aXF490vVyZY'  # твой токен
+TOKEN = os.getenv("BOT_TOKEN") # токен
 
 logging.basicConfig(level=logging.INFO)
 
 async def main():
-    bot = Bot(token=BOT_TOKEN)
+    bot = Bot(token=TOKEN)
     dp = Dispatcher(storage=MemoryStorage())
 
     await set_bot_commands(bot)
